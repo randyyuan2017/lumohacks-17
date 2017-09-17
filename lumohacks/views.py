@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from lumohacks.models import *
-
+from django.db.models import Q
 
 def landing_page(request):
     template_name = 'landing_page.html'
@@ -8,7 +8,13 @@ def landing_page(request):
 
 def pet_detail(request):
     template_name = 'pet.html'
-    return render(request, template_name=template_name)
+    connections = Connection.objects.filter(Q(user_a=request.user)|Q(user_b=request.user))
+    if Pet.objects.filter(auth_user__in=connections).exists():
+        pet = Pet.objects.get(auth_user__in=connections)
+    else:
+        pet = None
+    money = PetUser.objects.get(auth_user=request.user)
+    return render(request, template_name=template_name, context={'pet': pet, 'money': money})
 
 def cbt(request):
     template_name = 'cbt.html'

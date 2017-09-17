@@ -4,7 +4,7 @@ from django.contrib import admin
 
 class PetUserAdmin(admin.ModelAdmin):
     model = PetUser
-
+    list_display = ('auth_user',)
 
 class PetAdmin(admin.ModelAdmin):
     model = Pet
