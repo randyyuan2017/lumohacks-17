@@ -19,9 +19,10 @@ class Pet(models.Model):
 
 
 class Gift(models.Model):
-    pet = models.OneToOneField(Pet)
+    pet = models.ForeignKey(Pet)
     name = models.CharField(max_length=500)
     price = models.IntegerField(default=0)
+    purchased = models.BooleanField(default=False)
 
 
 # 1 for cbt and 2 for geo

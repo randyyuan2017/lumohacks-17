@@ -50,8 +50,9 @@ def store(request):
     template_name = 'store.html'
     pet_user = PetUser.objects.get(auth_user=request.user)
     money = pet_user.money
+    gifts = Gift.objects.filter(purchased=False)
     return render(request, template_name=template_name,
-                  context={'money': money})
+                  context={'money': money, 'gifts':gifts})
 
 def activity_detail(request, activity_id):
     template_name = 'activity_detail.html'
