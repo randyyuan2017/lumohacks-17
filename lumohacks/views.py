@@ -101,7 +101,8 @@ def store(request):
 def activity_detail(request, activity_id):
     template_name = 'activity_detail.html'
     activity = Activity.objects.get(id=activity_id)
-    return render(request, template_name=template_name, context={'activity':activity})
+    sound = activity.title == 'Body and Breath'
+    return render(request, template_name=template_name, context={'activity':activity, 'sound':sound})
 
 
 def activity_done(request, activity_id):
