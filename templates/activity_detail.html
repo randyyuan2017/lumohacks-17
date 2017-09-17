@@ -9,7 +9,12 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
     {% load static %}
     <img style="position:absolute; width:100%; height: 100%; top:0;left:0; z-index: -100;" src="{% static "images/BackgroundOnly.png" %}" alt="">
-    <button style="font-family: 'Roboto Slab', serif;text-align:left;margin-right:19%;float:right;width:65%;font-size:60px; vertical-align: top; margin-top:100px">{{ activity.description }}</button>
+    <button style="font-family: 'Roboto Slab',serif;    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;text-align:left;margin-right:19%;float:right;width:65%;font-size:60px; vertical-align: top; margin-top:100px">{{ activity.description }}</button>
     {% if sound %}
         <audio controls style="width: 80% ;margin:0 10%; height: 100px">
             <source src="{% static 'images/meditation.mp3' %}" type="audio/mpeg">
