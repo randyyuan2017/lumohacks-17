@@ -7,6 +7,8 @@
 <body>
     {% for geo in unanswered_geos %}
         <a href="{% url 'activity' geo.id %}"><button>{{ geo.description }}</button></a>
+        <p>money: {{ cbt.money }}</p>
+        <p>exp: {{ cbt.experience }}</p>
         <br>
     {% endfor %}
     <a href="{% url 'pet' %}"><button>back</button></a>

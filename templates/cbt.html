@@ -7,6 +7,8 @@
 <body>
     {% for cbt in unanswered_cbts %}
         <a href="{% url 'activity' cbt.id %}"><button>{{ cbt.description }}</button></a>
+        <p>money: {{ cbt.money }}</p>
+        <p>exp: {{ cbt.experience }}</p>
         <br>
     {% endfor %}
     <a href="{% url 'pet' %}"><button>back</button></a>
