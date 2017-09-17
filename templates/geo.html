@@ -9,7 +9,7 @@
     <img style="position:absolute; width:100%; height: 100%; top:0;left:0; z-index: -100;" src="{% static "images/BackgroundOnly.png" %}" alt="">
     <div style="width: 100%; height: 100px;"></div>
     {% for geo in unanswered_geos %}
-        <a style="width: 100%; height: 1px;margin: 0 10%;" href="{% url 'activity' geo.id %}"><img style="float: left;width:10%;vertical-align: top; display: inline-block;margin-left:5%" src="{% static 'images/DogPawIcon.png' %}" alt=""><button style="text-align:left;margin-right:19%;float:right;width:65%;font-size:60px; vertical-align: top; margin-top:-20px">{{ geo.title }}</button></a>
+        <a style="width: 100%; height: 1px;margin: 0 10%;" href="{% url 'activity' geo.id %}"><img style="float: left;width:10%;vertical-align: top; display: inline-block;margin-left:5%" src="{% static 'images/DogPawIconV2.png' %}" alt=""><button style="text-align:left;margin-right:19%;float:right;width:65%;font-size:60px; vertical-align: top; margin-top:-20px">{{ geo.title }}</button></a>
 
         <p style="margin-top:-35px;float:right;display: inline-block; font-size: 60px;"><img style="width: 30%; display: inline-block; transform: translate(0, 30%);" src="{% static 'images/CoinNew.png' %}" alt=""> {{ geo.money }}</p>
 

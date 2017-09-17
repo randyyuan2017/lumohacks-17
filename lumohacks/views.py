@@ -10,6 +10,16 @@ def landing_page(request):
 def pet_detail(request):
     template_name = 'pet.html'
     connections = Connection.objects.filter(Q(user_a=request.user)|Q(user_b=request.user))
+    has_hat = Gift.objects.filter(name='Hat', purchased=True).exists()
+    has_bowtie = Gift.objects.filter(name='Bow Tie', purchased=True).exists()
+    if has_bowtie and has_hat:
+        cloth='both'
+    elif has_bowtie:
+        cloth = 'bow_tie'
+    elif has_hat:
+        cloth = 'hat'
+    else:
+        cloth = 'none'
     if Pet.objects.filter(auth_user__in=connections).exists():
         pet = Pet.objects.get(auth_user__in=connections)
         total_exp = pet.exp
@@ -25,7 +35,7 @@ def pet_detail(request):
     money = pet_user.money
 
     return render(request, template_name=template_name,
-                  context={'pet': pet, 'money': money, 'level': int(level+1), 'percentage': percentage})
+                  context={'pet': pet, 'money': money, 'level': int(level+1), 'percentage': percentage, 'cloth':cloth})
 
 def cbt(request):
     template_name = 'cbt.html'
@@ -46,8 +56,17 @@ def cbt(request):
 def geo(request):
     template_name = 'geo.html'
     user_activities = UserActivities.objects.filter(auth_user=request.user)
-    unanswered_geos = Activity.objects.filter(type=2).exclude(useractivities__in=user_activities)
-    return render(request, template_name=template_name, context={'unanswered_geos':unanswered_geos})
+    connection = Connection.objects.get(Q(user_a=request.user)|Q(user_b=request.user))
+    if connection.user_a == request.user:
+        peer = connection.user_b
+    else:
+        peer = connection.user_a
+    peer_activities = UserActivities.objects.filter(auth_user=peer)
+    cbts_unanswered_by_both = Activity.objects.filter(type=2).exclude(useractivities__in=user_activities).exclude(useractivities__in=peer_activities)
+    cbts_answered_by_peer = Activity.objects.filter(type=2, useractivities__in=peer_activities).exclude(
+        useractivities__in=user_activities)
+    return render(request, template_name=template_name, context={'cbts_unanswered_by_both':cbts_unanswered_by_both,
+                                                                 'cbts_answered_by_peer':cbts_answered_by_peer})
 
 
 def map(request):
@@ -61,7 +80,7 @@ def buy_gifts(request, gift_id):
 
     gift = Gift.objects.get(id=gift_id)
     gift_price = gift.price
-    if money>gift_price:
+    if money>=gift_price:
         gift.purchased = True
         gift.save()
         pet_user.money -= gift_price

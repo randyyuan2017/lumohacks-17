@@ -11,7 +11,7 @@
 
 
     {% for cbt in cbts_answered_by_peer %}
-        <a style="width: 100%; height: 1px;margin: 0 10%;" href="{% url 'activity' cbt.id %}"><img style="float: left;width:10%;vertical-align: top; display: inline-block;margin-left:5%" src="{% static 'images/DogPawIcon.png' %}" alt=""><button style="text-align:left;margin-right:19%;float:right;width:65%;font-size:60px; vertical-align: top; margin-top:-20px">{{ cbt.title }}</button></a>
+        <a style="width: 100%; height: 1px;margin: 0 10%;" href="{% url 'activity' cbt.id %}"><img style="float: left;width:10%;vertical-align: top; display: inline-block;margin-left:5%" src="{% static 'images/DogPawIconV2.png' %}" alt=""><button style="text-align:left;margin-right:19%;float:right;width:65%;font-size:60px; vertical-align: top; margin-top:-20px">{{ cbt.title }}</button></a>
 
         <p style="margin-top:-35px;float:right;display: inline-block; font-size: 60px;"><img style="width: 30%; display: inline-block; transform: translate(0, 30%);" src="{% static 'images/CoinNew.png' %}" alt=""> {{ cbt.money }} x2 </p>
 
@@ -22,7 +22,7 @@
 
 
     {% for cbt in cbts_unanswered_by_both %}
-        <a style="width: 100%; height: 1px;margin: 0 10%;" href="{% url 'activity' cbt.id %}"><img style="float: left;width:10%;vertical-align: top; display: inline-block;margin-left:5%" src="{% static 'images/DogPawIcon.png' %}" alt=""><button style="text-align:left;margin-right:19%;float:right;width:65%;font-size:60px; vertical-align: top; margin-top:-20px">{{ cbt.title }}</button></a>
+        <a style="width: 100%; height: 1px;margin: 0 10%;" href="{% url 'activity' cbt.id %}"><img style="float: left;width:10%;vertical-align: top; display: inline-block;margin-left:5%" src="{% static 'images/DogPawIconV2.png' %}" alt=""><button style="text-align:left;margin-right:19%;float:right;width:65%;font-size:60px; vertical-align: top; margin-top:-20px">{{ cbt.title }}</button></a>
 
         <p style="margin-top:-35px;float:right;display: inline-block; font-size: 60px;"><img style="width: 30%; display: inline-block; transform: translate(0, 30%);" src="{% static 'images/CoinNew.png' %}" alt=""> {{ cbt.money }}</p>
 
