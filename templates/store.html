@@ -10,7 +10,7 @@
     <img style="position: absolute; width:200px; bottom: 60px; right: 200px" src="{% static "images/CoinNew.png" %}" alt="">
     <div style="width:100px; height:100px"></div>
     {% for gift in gifts %}
-        <a style="width: 100%; height: 1px;margin: 0 10%;" href="{% url 'activity' gift.id %}"><img style="float: left;width:10%;vertical-align: top; display: inline-block;margin-left:5%" src="{% static 'images/CollarShopIcon.png' %}" alt=""><button style="text-align:left;margin-right:19%;float:right;width:65%;font-size:60px; vertical-align: top; margin-top:-20px">{{ gift.name }}</button></a>
+        <a style="width: 100%; height: 1px;margin: 0 10%;" href="{% url 'shop' gift.id %}"><img style="float: left;width:10%;vertical-align: top; display: inline-block;margin-left:5%" src="{% static 'images/CollarShopIcon.png' %}" alt=""><button style="text-align:left;margin-right:19%;float:right;width:65%;font-size:60px; vertical-align: top; margin-top:-20px">{{ gift.name }}</button></a>
 
         <p style="margin-top:-115px;float:right;display: inline-block; font-size: 60px;"><img style="width: 30%; display: inline-block; transform: translate(0, 30%);" src="{% static 'images/CoinNew.png' %}" alt=""> {{ gift.price }}</p>
 

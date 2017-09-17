@@ -6,9 +6,10 @@ class PetUserAdmin(admin.ModelAdmin):
     model = PetUser
     list_display = ('auth_user',)
 
+
 class PetAdmin(admin.ModelAdmin):
     model = Pet
-
+    list_display = ('name',)
 
 class ConnectionAdmin(admin.ModelAdmin):
     model = Connection
@@ -16,6 +17,8 @@ class ConnectionAdmin(admin.ModelAdmin):
 
 class GiftAdmin(admin.ModelAdmin):
     model = Gift
+    list_display = ('name','auth_user',)
+    raw_id_fields = ['auth_user']
 
 class ActivityAdmin(admin.ModelAdmin):
     model = Activity

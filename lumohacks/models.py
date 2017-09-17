@@ -20,6 +20,7 @@ class Pet(models.Model):
 
 class Gift(models.Model):
     pet = models.ForeignKey(Pet)
+    auth_user = models.OneToOneField(User, default=None)
     name = models.CharField(max_length=500)
     price = models.IntegerField(default=0)
     purchased = models.BooleanField(default=False)
@@ -36,5 +37,5 @@ class Activity(models.Model):
 
 class UserActivities(models.Model):
     auth_user = models.ForeignKey(User)
-    activity = models.OneToOneField(Activity)
+    activity = models.ForeignKey(Activity)
     is_answered = models.BooleanField(default=False)

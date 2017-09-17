@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'lumohacks',
-    'social_django',
 ]
 
 MIDDLEWARE = [

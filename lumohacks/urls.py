@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^map/$', views.map, name='map'),
     url(r'^store/$', views.store, name='store'),
     url(r'^activity/(?P<activity_id>\d+)$', views.activity_detail, name='activity'),
+    url(r'^shop/(?P<gift_id>\d+)$', views.buy_gifts, name='shop'),
     url(r'^done/(?P<activity_id>\d+)$', views.activity_done, name='done'),
     url(r'^$', views.landing_page, name='landing'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
