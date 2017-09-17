@@ -5,6 +5,7 @@
     <title>pet detail</title>
 </head>
 <body>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
     {% load static %}
     {% if cloth == 'both' %}
         <img style="position:absolute; width:100%; height: 100%; top:0;left:0; z-index: -100;" src="{% static "images/DogBowtieHat.gif" %}" alt="">
@@ -18,7 +19,7 @@
     <a style="position:absolute; left:75px; top:50px; width: 150px; height: 150px" href="{% url 'map' %}"><img style="width: 180px; height: 180px" src="{% static "images/Compass.png" %}" alt=""></a>
     <div style="position:absolute; right:30px;border:5px solid black; width: 40%; height: 100px; margin-top:68px; margin-right:3%">
         <div style="height: 100%; width: {{ percentage }}%; background:greenyellow"></div>
-        <p style="float:right; font-size: 40px">Lv. {{ level }}</p>
+        <p style="font-family: 'Roboto Slab', serif;float:right; font-size: 40px">Lv. {{ level }}</p>
     </div>
     <div style="position:absolute;left:180px; top:-415px; width: 150px; height: 150px">
         <a href="{% url 'store' %}"><img style="display: inline-block; vertical-align: middle; transform:translate(50px,140%)" src="{% static 'images/CoinNew.png' %}" alt=""></a>

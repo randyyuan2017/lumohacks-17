@@ -62,11 +62,12 @@ def geo(request):
     else:
         peer = connection.user_a
     peer_activities = UserActivities.objects.filter(auth_user=peer)
-    cbts_unanswered_by_both = Activity.objects.filter(type=2).exclude(useractivities__in=user_activities).exclude(useractivities__in=peer_activities)
-    cbts_answered_by_peer = Activity.objects.filter(type=2, useractivities__in=peer_activities).exclude(
+    geos_unanswered_by_both = Activity.objects.filter(type=2).exclude(useractivities__in=user_activities).exclude(useractivities__in=peer_activities)
+    geos_answered_by_peer = Activity.objects.filter(type=2, useractivities__in=peer_activities).exclude(
         useractivities__in=user_activities)
-    return render(request, template_name=template_name, context={'cbts_unanswered_by_both':cbts_unanswered_by_both,
-                                                                 'cbts_answered_by_peer':cbts_answered_by_peer})
+
+    return render(request, template_name=template_name, context={'geos_unanswered_by_both':geos_unanswered_by_both,
+                                                                 'geos_answered_by_peer':geos_answered_by_peer})
 
 
 def map(request):
