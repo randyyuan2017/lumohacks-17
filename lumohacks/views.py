@@ -13,9 +13,9 @@ def pet_detail(request):
     if Pet.objects.filter(auth_user__in=connections).exists():
         pet = Pet.objects.get(auth_user__in=connections)
         total_exp = pet.exp
-        level = floor(total_exp/10) if pet.exp != 0 else 0
-        remaining_exp = total_exp - 10*level
-        level_exp = 10*(level+1)
+        level = floor(total_exp/35) if pet.exp != 0 else 0
+        remaining_exp = total_exp - 35*level
+        level_exp = 35*(level+1)
         percentage = (float(remaining_exp)/level_exp)*100
     else:
         pet = None
@@ -25,7 +25,7 @@ def pet_detail(request):
     money = pet_user.money
 
     return render(request, template_name=template_name,
-                  context={'pet': pet, 'money': money, 'level': int(level), 'percentage': percentage})
+                  context={'pet': pet, 'money': money, 'level': int(level+1), 'percentage': percentage})
 
 def cbt(request):
     template_name = 'cbt.html'
@@ -48,7 +48,10 @@ def map(request):
 
 def store(request):
     template_name = 'store.html'
-    return render(request, template_name=template_name)
+    pet_user = PetUser.objects.get(auth_user=request.user)
+    money = pet_user.money
+    return render(request, template_name=template_name,
+                  context={'money': money})
 
 def activity_detail(request, activity_id):
     template_name = 'activity_detail.html'

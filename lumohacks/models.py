@@ -18,6 +18,12 @@ class Pet(models.Model):
     exp = models.IntegerField()
 
 
+class Gift(models.Model):
+    pet = models.OneToOneField(Pet)
+    name = models.CharField(max_length=500)
+    price = models.IntegerField(default=0)
+
+
 # 1 for cbt and 2 for geo
 class Activity(models.Model):
     title = models.CharField(max_length=500, default="")

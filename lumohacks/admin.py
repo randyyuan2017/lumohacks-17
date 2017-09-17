@@ -14,6 +14,9 @@ class ConnectionAdmin(admin.ModelAdmin):
     model = Connection
 
 
+class GiftAdmin(admin.ModelAdmin):
+    model = Gift
+
 class ActivityAdmin(admin.ModelAdmin):
     model = Activity
     list_display = ('description',)
@@ -25,6 +28,7 @@ class UserActivitiesAdmin(admin.ModelAdmin):
 
 admin.site.register(PetUser, PetUserAdmin)
 admin.site.register(Pet, PetAdmin)
+admin.site.register(Gift, GiftAdmin)
 admin.site.register(Connection, ConnectionAdmin)
 admin.site.register(Activity, ActivityAdmin)
 admin.site.register(UserActivities, UserActivitiesAdmin)
