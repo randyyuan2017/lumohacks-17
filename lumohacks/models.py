@@ -22,6 +22,8 @@ class Pet(models.Model):
 class Activity(models.Model):
     description = models.CharField(max_length=500)
     type = models.IntegerField()
+    experience = models.IntegerField(default=0)
+    money = models.IntegerField(default=0)
 
 
 class UserActivities(models.Model):
