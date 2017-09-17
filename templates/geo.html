@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>geo</title>
+</head>
+<body>
+    {% for geo in unanswered_geos %}
+        <a href="{% url 'activity' geo.id %}"><button>{{ geo.description }}</button></a>
+        <br>
+    {% endfor %}
+    <a href="{% url 'pet' %}"><button>back</button></a>
+</body>
+</html>
