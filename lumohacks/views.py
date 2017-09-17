@@ -25,7 +25,7 @@ def pet_detail(request):
     money = pet_user.money
 
     return render(request, template_name=template_name,
-                  context={'pet': pet, 'money': money, 'level': level, 'percentage': percentage})
+                  context={'pet': pet, 'money': money, 'level': int(level), 'percentage': percentage})
 
 def cbt(request):
     template_name = 'cbt.html'

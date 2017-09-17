@@ -7,18 +7,17 @@
 <body>
     {% load static %}
     <img style="position:absolute; width:100%; height: 100%; top:0;left:0; z-index: -100;" src="{% static "images/pet_3.gif" %}" alt="">
-    <div style="border:5px solid black; width: 40%; height: 100px; margin-top:80px; margin-left:3%">
+    <a style="position:absolute; left:75px; top:50px; width: 150px; height: 150px" href="{% url 'map' %}"><img style="width: 180px; height: 180px" src="{% static "images/Compass.png" %}" alt=""></a>
+    <div style="position:absolute; right:30px;border:5px solid black; width: 40%; height: 100px; margin-top:75px; margin-right:3%">
         <div style="height: 100%; width: {{ percentage }}%; background:greenyellow"></div>
+        <p style="float:right; font-size: 40px">Lv. {{ level }}</p>
     </div>
-    <div style="position:absolute; top:-170px; right:50px">
-        <img style="display: inline-block; vertical-align: middle; transform:translate(50px,0)" src="{% static 'images/CoinNew.png' %}" alt="">
-        <p style="display: inline-block; font-size: 200px; vertical-align: middle">{{ money }}</p>
+    <div style="position:absolute;left:180px; top:-415px; width: 150px; height: 150px">
+        <a href="{% url 'store' %}"><img style="display: inline-block; vertical-align: middle; transform:translate(50px,140%)" src="{% static 'images/CoinNew.png' %}" alt=""></a>
     </div>
     {#    <h1>pet detail</h1>#}
     {#    <img src="{% static "images/pet.gif" %}" alt="">#}
-    <a href="{% url 'map' %}"><button>map</button></a>
-    <a href="{% url 'store' %}"><button>store</button></a>
-    <a style="position:absolute; right:100px; bottom:100px; width: 200px; height: 200px" href="{% url 'geo' %}"><img src="{% static "images/DogButterFlyGeoIcon.gif" %}" alt=""></a>
+    <a style="position:absolute; right:40px; bottom:20px; width: 200px; height: 200px" href="{% url 'geo' %}"><img style="width:200px;" src="{% static "images/DogButterFlyGeoIcon.gif" %}" alt=""></a>
     <a style="position:absolute; left:0; bottom:50px; width: 200px; height: 200px" href="{% url 'cbt' %}"><img src="{% static "images/DogFoodBowl.png" %}" alt=""></a>
 </body>
 </html>
