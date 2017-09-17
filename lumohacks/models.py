@@ -20,7 +20,7 @@ class Pet(models.Model):
 
 class Gift(models.Model):
     pet = models.ForeignKey(Pet)
-    auth_user = models.OneToOneField(User, default=None)
+    auth_user = models.ForeignKey(User, default=None)
     name = models.CharField(max_length=500)
     price = models.IntegerField(default=0)
     purchased = models.BooleanField(default=False)
