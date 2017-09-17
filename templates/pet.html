@@ -6,13 +6,19 @@
 </head>
 <body>
     {% load static %}
-    <h1>pet detail
-        <img src="{% static "images/pet.gif" %}" alt=""></h1>
-{#        <img style="width: 100%; height: 100%; position: absolute; top:0; left: 0" src="{% static "images/pet.gif" %}" alt=""></h1>#}
-
+    <img style="position:absolute; width:100%; height: 100%; top:0;left:0; z-index: -100;" src="{% static "images/pet_3.gif" %}" alt="">
+    <div style="border:5px solid black; width: 40%; height: 100px; margin-top:80px; margin-left:3%">
+        <div style="height: 100%; width: {{ percentage }}%; background:greenyellow"></div>
+    </div>
+    <div style="position:absolute; top:-170px; right:50px">
+        <img style="display: inline-block; vertical-align: middle; transform:translate(50px,0)" src="{% static 'images/CoinNew.png' %}" alt="">
+        <p style="display: inline-block; font-size: 200px; vertical-align: middle">{{ money }}</p>
+    </div>
+    {#    <h1>pet detail</h1>#}
+    {#    <img src="{% static "images/pet.gif" %}" alt="">#}
     <a href="{% url 'map' %}"><button>map</button></a>
     <a href="{% url 'store' %}"><button>store</button></a>
-    <a href="{% url 'geo' %}"><button>geo</button></a>
-    <a href="{% url 'cbt' %}"><button>cbt</button></a>
+    <a style="position:absolute; right:100px; bottom:100px; width: 200px; height: 200px" href="{% url 'geo' %}"><img src="{% static "images/DogButterFlyGeoIcon.gif" %}" alt=""></a>
+    <a style="position:absolute; left:0; bottom:50px; width: 200px; height: 200px" href="{% url 'cbt' %}"><img src="{% static "images/DogFoodBowl.png" %}" alt=""></a>
 </body>
 </html>

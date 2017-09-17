@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from lumohacks.models import *
 from django.db.models import Q
+from math import log, floor, pow
 
 def landing_page(request):
     template_name = 'landing_page.html'
@@ -11,10 +12,20 @@ def pet_detail(request):
     connections = Connection.objects.filter(Q(user_a=request.user)|Q(user_b=request.user))
     if Pet.objects.filter(auth_user__in=connections).exists():
         pet = Pet.objects.get(auth_user__in=connections)
+        total_exp = pet.exp
+        level = floor(total_exp/10) if pet.exp != 0 else 0
+        remaining_exp = total_exp - 10*level
+        level_exp = 10*(level+1)
+        percentage = (float(remaining_exp)/level_exp)*100
     else:
         pet = None
-    money = PetUser.objects.get(auth_user=request.user)
-    return render(request, template_name=template_name, context={'pet': pet, 'money': money})
+        level = 0
+        percentage = 0
+    pet_user = PetUser.objects.get(auth_user=request.user)
+    money = pet_user.money
+
+    return render(request, template_name=template_name,
+                  context={'pet': pet, 'money': money, 'level': level, 'percentage': percentage})
 
 def cbt(request):
     template_name = 'cbt.html'
@@ -51,5 +62,13 @@ def activity_done(request, activity_id):
         user_activity.save()
     except Exception as e:
         print str(e)
+    pet_user = PetUser.objects.get(auth_user=request.user)
+    pet_user.money += activity.money
+    pet_user.save()
+
+    connections = Connection.objects.filter(Q(user_a=request.user)|Q(user_b=request.user))
+    pet = Pet.objects.filter(auth_user=connections[0])[0]
+    pet.exp += activity.experience
+    pet.save()
     return redirect('pet')
     # return render(request, template_name=template_name, context={'activity':activity})

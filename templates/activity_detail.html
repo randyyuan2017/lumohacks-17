@@ -5,8 +5,8 @@
     <title>activity detail</title>
 </head>
 <body>
-    <h1>activity detail</h1>
-
+    {% load static %}
+    <img style="position:absolute; width:100%; height: 100%; top:0;left:0; z-index: -100;" src="{% static "images/BackgroundOnly.png" %}" alt="">
     <a href="{% url 'done' activity.id %}"><button>Done</button></a>
     <a href="{% url 'pet' %}"><button>back</button></a>
 

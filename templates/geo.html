@@ -5,10 +5,12 @@
     <title>geo</title>
 </head>
 <body>
+    {% load static %}
+    <img style="position:absolute; width:100%; height: 100%; top:0;left:0; z-index: -100;" src="{% static "images/BackgroundOnly.png" %}" alt="">
     {% for geo in unanswered_geos %}
-        <a href="{% url 'activity' geo.id %}"><button>{{ geo.description }}</button></a>
-        <p>money: {{ cbt.money }}</p>
-        <p>exp: {{ cbt.experience }}</p>
+        <a href="{% url 'activity' geo.id %}"><button>{{ geo.title }}</button></a>
+        <p>money: {{ geo.money }}</p>
+        <p>exp: {{ geo.experience }}</p>
         <br>
     {% endfor %}
     <a href="{% url 'pet' %}"><button>back</button></a>

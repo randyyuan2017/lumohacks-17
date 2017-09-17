@@ -20,6 +20,7 @@ class Pet(models.Model):
 
 # 1 for cbt and 2 for geo
 class Activity(models.Model):
+    title = models.CharField(max_length=500, default="")
     description = models.CharField(max_length=500)
     type = models.IntegerField()
     experience = models.IntegerField(default=0)
