@@ -19,4 +19,4 @@ six==1.11.0
 social-auth-app-django==1.2.0
 social-auth-core==1.4.0
 twilio==6.7.1
-urllib3==1.22
+urllib3==1.26.5
